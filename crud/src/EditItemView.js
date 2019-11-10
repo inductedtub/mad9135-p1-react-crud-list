@@ -46,9 +46,6 @@ const handleInputChange = event => {
                 props.addRubric(formData);}}>
                     <Link to="/">Add Edit</Link>
                 </button>
-                <button >
-                    <Link to="/">Cancel</Link>
-                </button>
             </form>
         </div>
     );

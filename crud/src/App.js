@@ -65,6 +65,7 @@ function App() {
         console.log(editItem)
 
         setRubrics(rubrics.filter(rubric => rubric.id !== item.id))
+        setRubrics(rubrics.filter(rubric => rubric.id !== item.id))
     }
 
     return (
