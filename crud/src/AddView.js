@@ -1,34 +1,54 @@
-import React from 'react';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
-function AddView() {
+function AddView(props) {
 
-  const newItem [item, setItem] = useState([])
+    const emptyForm = {
+        id: null,
+        title: '',
+        subTitle: ''
+    }
+
+    const [formData, addFormData] = useState(emptyForm)
+
+    const handleInputChange = event => {
+        const {name, value} = event.target
+
+        addFormData({...formData, [name]: value})
+    }
+
     return (
-        <div className="AddView">
+        <div>
             <h1>Add a rubric</h1>
+            <form
+                onSubmit={event => {
+                event.preventDefault()
 
-            <form>
-                <label>
-                    Rubric:
-                    <input type="text" name="name"/>
-                </label>
+                props.addRubric(formData)
+                addFormData(emptyForm)
+            }}>
 
-                <label>
-                    Total marks:
-                    <input type="number" name="name"/>
-                </label>
+                <label>Title</label>
+                <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleInputChange}/>
 
-                <label>
-                    Description:
-                    <input type="text" name="name"/>
-                </label>
+                <label>subTitle</label>
+                <input
+                    type="text"
+                    name="subTitle"
+                    value={formData.subTitle}
+                    onChange={handleInputChange}/>
+
+                <button>
+                    <Link to="/">Add</Link>
+                </button>
+                <button>
+                    <Link to="/">Cancel</Link>
+                </button>
             </form>
-
-            <button>
-                <Link to="/">Add</Link>
-            </button>
         </div>
     );
 }

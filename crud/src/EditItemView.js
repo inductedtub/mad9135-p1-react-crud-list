@@ -9,7 +9,6 @@ function EditItemView() {
                 <title></title>
                 <input type="text"/>
                 <input type="text"/>
-
             </form>
         </div>
     );
