@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 function AddView(props) {
-
     const emptyForm = {
         id: null,
         title: '',
@@ -13,20 +12,19 @@ function AddView(props) {
 
     const handleInputChange = event => {
         const {name, value} = event.target
-
-        addFormData({...formData, [name]: value})
+  
+       addFormData({...formData, [name]: value})
     }
 
     return (
         <div>
             <h1>Add a rubric</h1>
-            <form
+            <form type="submit" 
                 onSubmit={event => {
                 event.preventDefault()
-
-                props.addRubric(formData)
-                addFormData(emptyForm)
-            }}>
+                console.log('submitting form')
+                console.log(formData)
+                props.addRubric(formData)}}>
 
                 <label>Title</label>
                 <input
@@ -42,10 +40,14 @@ function AddView(props) {
                     value={formData.subTitle}
                     onChange={handleInputChange}/>
 
-                <button>
+                <button type='submit' onClick={event => {
+                event.preventDefault()
+                console.log('submitting form')
+                //console.log(formData)
+                props.addRubric(formData)}}>
                     <Link to="/">Add</Link>
                 </button>
-                <button>
+                <button >
                     <Link to="/">Cancel</Link>
                 </button>
             </form>

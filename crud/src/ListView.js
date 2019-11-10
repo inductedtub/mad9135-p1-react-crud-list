@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ListItem from './ListItem';
 
 function ListView(props) {
-    let id = 0
     return (
         <ul>
             {props.list.map(item => {
-                id++ 
-                return <ListItem title={item.title} subTitle={item.subTitle} key={id}/>
+                return <ListItem item={item}  key={Math.random()+1} deleteRubric={props.deleteRubric} editRubric={props.editRubric}/>
             })}
         </ul>
     );
